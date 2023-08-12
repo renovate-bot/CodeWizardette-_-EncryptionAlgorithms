@@ -15,14 +15,13 @@ def ibn_arabi_decryption(encrypted_text):
     # Şifreli metni sayı dizisine çevir
     encrypted_sequence = [int(encrypted_text[i:i+2]) for i in range(0, len(encrypted_text), 2)]
 
-    # Ters işlemi uygula
+    # Ters işlem
     original_sequence = [(number - 3) // 2 for number in encrypted_sequence]
 
-    # Orijinal metni elde et
+    # Orijinal 
     original_text = ''.join([number_to_letter[number] for number in original_sequence])
     return original_text
 
-# Örnek kullanım
 plaintext = "merhaba"
 encrypted = ibn_arabi_encryption(plaintext)
 print("Şifrelenmiş Metin:", encrypted)

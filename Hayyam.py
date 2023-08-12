@@ -23,11 +23,10 @@ def omer_hayyam_decryption(encrypted_text):
     # Öklidyen algoritmasını tersine çevirerek orijinal sayı dizisini elde et
     original_sequence = [num * encrypted_sequence[0] for num in encrypted_sequence]
 
-    # Orijinal metni elde et
+    # Orijinal 
     original_text = ''.join([number_to_letter[number] for number in original_sequence])
     return original_text
 
-# Örnek kullanım
 plaintext = "merhaba"
 encrypted = omer_hayyam_encryption(plaintext)
 print("Şifrelenmiş Metin:", encrypted)

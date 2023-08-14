@@ -1,0 +1,41 @@
+def pack_bits(data):
+    packed = bytearray()
+    current_byte = 0
+    bit_count = 0
+    
+    for bit in data:
+        current_byte |= (bit & 1) << bit_count
+        bit_count += 1
+        
+        if bit_count == 8:
+            packed.append(current_byte)
+            current_byte = 0
+            bit_count = 0
+    
+    if bit_count > 0:
+        packed.append(current_byte)
+    
+    return packed
+
+def unpack_bits(packed_data, num_bits):
+    unpacked = []
+    
+    for byte in packed_data:
+        for i in range(8):
+            if num_bits == 0:
+                break
+            unpacked.append((byte >> i) & 1)
+            num_bits -= 1
+    
+    return unpacked
+#######################
+# Örnek kullanım
+data = [1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1]  # 16 bitlik veri
+packed_data = pack_bits(data)
+unpacked_data = unpack_bits(packed_data, len(data))
+############################
+print("Orjinal Veri:", data)
+print("Paklenmiş Veri:", packed_data)
+print("Paklenmiş Verinin Boyutu:", len(packed_data))
+print("Paklenmiş Veri Çözülmüş Hali:", unpacked_data)
+##################################
